@@ -17,7 +17,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      helth: {
+      health: {
         allowNull: false,
         type: Sequelize.STRING,
       },
