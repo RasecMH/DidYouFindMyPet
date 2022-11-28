@@ -13,6 +13,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
+      phone: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      code: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      }
     });
   },
 

@@ -17,6 +17,14 @@ Country.init({
     allowNull: false,
     type: STRING,
   },
+  phone: {
+    allowNull: false,
+    type: INTEGER,
+  },
+  code: {
+    allowNull: false,
+    type: STRING,
+  },
 }, {
   sequelize: db,
   modelName: 'Country',
