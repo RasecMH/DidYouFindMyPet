@@ -8,7 +8,7 @@ export const loginSchema = Joi.object({
     'any.required': ALLFIELDSMUSTBEFILLED,
     'string.empty': ALLFIELDSMUSTBEFILLED,
   }),
-  password: Joi.string().required().min(6).messages({
+  password: Joi.string().required().messages({
     'any.required': ALLFIELDSMUSTBEFILLED,
     'string.empty': ALLFIELDSMUSTBEFILLED,
   }),

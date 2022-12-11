@@ -13,4 +13,8 @@ export default class UserService {
     }
     return this.model.create({ ...data });
   }
+
+  async findByEmail(email: string): Promise<IUser | null> {
+    return this.model.findOne({ where: { email } });
+  }
 }
