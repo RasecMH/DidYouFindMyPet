@@ -47,4 +47,16 @@ export default class UserController {
       next(error);
     }
   };
+
+  findById = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id } = req.params;
+      const user = await this.service.findById(Number(id));
+      if (!user) throw new HttpError(StatusCodes.NOT_FOUND, 'User not found');
+
+      return res.status(StatusCodes.OK).json({ user });
+    } catch (error) {
+      next(error);
+    }
+  };
 }

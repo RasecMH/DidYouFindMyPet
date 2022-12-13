@@ -17,4 +17,8 @@ export default class UserService {
   async findByEmail(email: string): Promise<IUser | null> {
     return this.model.findOne({ where: { email } });
   }
+
+  async findById(id: number): Promise<IUser | null> {
+    return this.model.findOne({ where: { id }, attributes: { exclude: ['password'] } });
+  }
 }
