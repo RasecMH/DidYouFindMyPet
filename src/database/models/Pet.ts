@@ -29,6 +29,10 @@ Pet.init({
     allowNull: false,
     type: STRING,
   },
+  qrCode: {
+    allowNull: false,
+    type: STRING,
+  },
   userId: {
     allowNull: false,
     type: INTEGER,

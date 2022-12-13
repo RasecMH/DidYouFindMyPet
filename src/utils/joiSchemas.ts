@@ -36,3 +36,18 @@ export const registerSchema = Joi.object({
     'any.empty': ALLFIELDSMUSTBEFILLED,
   }),
 });
+
+export const createPetSchema = Joi.object({
+  name: Joi.string().required().messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'string.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+  description: Joi.string().required().messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'string.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+  health: Joi.string().required().messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'string.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+});

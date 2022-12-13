@@ -1,6 +1,7 @@
 import express from 'express';
 import httpErrorMiddleware from './middleware/errorMiddleware';
 import UserRouter from './routes/UserRouter';
+import PetRouter from './routes/PetRouter';
 
 class App {
   public app: express.Express;
@@ -24,6 +25,7 @@ class App {
     this.app.use(express.json());
     this.app.use(accessControl);
     this.app.use('/user', UserRouter);
+    this.app.use('/pet', PetRouter);
     this.app.use(httpErrorMiddleware);
   }
 
