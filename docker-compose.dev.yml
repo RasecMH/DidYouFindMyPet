@@ -9,6 +9,7 @@ services:
     command: npm run dev
     volumes:
       - ./src:/app-backend/src
+      - ./public:/app-backend/public
     environment:
       - APP_PORT=3001
       - JWT_SECRET=jwt_secret
