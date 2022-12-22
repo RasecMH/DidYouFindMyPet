@@ -51,3 +51,34 @@ export const createPetSchema = Joi.object({
     'string.empty': ALLFIELDSMUSTBEFILLED,
   }),
 });
+
+export const locationSchema = Joi.object({
+  petId: Joi.number().required().min(0).messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'any.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+  userId: Joi.number().required().min(0).messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'any.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+  locationLink: Joi.string().required().messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'string.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+  address: Joi.string().required().messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'string.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+  cityId: Joi.number().required().min(0).messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'any.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+  message: Joi.string().required().messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'string.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+  phone: Joi.string().required().messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'string.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+});
