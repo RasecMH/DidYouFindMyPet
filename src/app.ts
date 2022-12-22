@@ -2,6 +2,7 @@ import express from 'express';
 import httpErrorMiddleware from './middleware/errorMiddleware';
 import UserRouter from './routes/UserRouter';
 import PetRouter from './routes/PetRouter';
+import LocationRouter from './routes/LocationRouter';
 
 class App {
   public app: express.Express;
@@ -26,9 +27,10 @@ class App {
     this.app.use(accessControl);
     this.app.use('/user', UserRouter);
     this.app.use('/pet', PetRouter);
+    this.app.use('/location', LocationRouter);
     this.app.use(httpErrorMiddleware);
 
-    this.app.use('/images', express.static('public/images/qrCodes'));
+    this.app.use('/images', express.static('public/images/qrcodes'));
   }
 
   public start(PORT: string | number):void {

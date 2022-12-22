@@ -11,6 +11,8 @@ export default class LocationHistory extends Model {
   address: string;
   cityId: number;
   contactId: number;
+  message?: string;
+  phone?: string;
 }
 
 LocationHistory.init({

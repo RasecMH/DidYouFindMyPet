@@ -1,6 +1,6 @@
 export interface IContactRegister {
-  message: string;
-  phone: string;
+  message?: string;
+  phone?: string;
 }
 
 export interface IContact extends IContactRegister {
@@ -12,13 +12,17 @@ export interface ILocationRegister extends IContactRegister {
   locationLink: string;
   address: string;
   cityId: number;
-  userId: number;
 }
 
-export interface ILocationWithContact extends ILocationRegister {
+export interface ILocationWithContactId extends ILocationRegister {
   contactId: number;
 }
 
-export interface ILocation extends ILocationWithContact {
+export interface ILocation extends ILocationWithContactId {
   id: number;
+}
+
+export interface ILocationWithContact extends ILocation {
+  message: string;
+  phone: string;
 }
