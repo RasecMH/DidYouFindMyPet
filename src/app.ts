@@ -27,6 +27,8 @@ class App {
     this.app.use('/user', UserRouter);
     this.app.use('/pet', PetRouter);
     this.app.use(httpErrorMiddleware);
+
+    this.app.use('/images', express.static('public/images/qrCodes'));
   }
 
   public start(PORT: string | number):void {
