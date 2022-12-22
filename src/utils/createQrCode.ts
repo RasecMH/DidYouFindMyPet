@@ -8,7 +8,7 @@ const createQrCode = async (id: number) => {
   console.log(`${myPath}/${id}.png`);
 
   const qrBase64 = await QRCode.toFile(
-    `public/images/qrCodes/${id}.png`,
+    `public/images/qrcodes/${id}.png`,
     `localhost:3001/pet/${id}`,
   );
 

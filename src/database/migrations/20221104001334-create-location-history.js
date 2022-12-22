@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('localtion_history', {
+    await queryInterface.createTable('location_history', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -24,6 +24,7 @@ module.exports = {
       locationLink: {
         allowNull: false,
         type: Sequelize.STRING,
+        field: 'location_link',
       },
       address: {
         allowNull: false,

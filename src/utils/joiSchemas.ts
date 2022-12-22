@@ -57,10 +57,6 @@ export const locationSchema = Joi.object({
     'any.required': ALLFIELDSMUSTBEFILLED,
     'any.empty': ALLFIELDSMUSTBEFILLED,
   }),
-  userId: Joi.number().required().min(0).messages({
-    'any.required': ALLFIELDSMUSTBEFILLED,
-    'any.empty': ALLFIELDSMUSTBEFILLED,
-  }),
   locationLink: Joi.string().required().messages({
     'any.required': ALLFIELDSMUSTBEFILLED,
     'string.empty': ALLFIELDSMUSTBEFILLED,
