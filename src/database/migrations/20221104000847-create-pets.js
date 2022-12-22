@@ -24,6 +24,7 @@ module.exports = {
       qrCode: {
         allowNull: false,
         type: Sequelize.STRING,
+        field: 'qr_code',
       },
       userId: {
         allowNull: false,

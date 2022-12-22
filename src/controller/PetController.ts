@@ -2,6 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import { Request, Response, NextFunction } from 'express';
 import HttpError from '../utils/httpError';
 import PetService from '../service/PetService';
+import createQrCode from '../utils/createQrCode';
 
 export default class PetController {
   service = new PetService();
@@ -13,11 +14,14 @@ export default class PetController {
         name,
         description,
         health,
+        qrCode: 'Not generated',
         userId,
       });
+      const qr = await createQrCode(newPet.id);
+      console.log(qr);
 
+      await this.service.updateQrCode(newPet.id, `/images/${1}`);
       const pet = await this.service.findById(newPet.id);
-
       return res.status(StatusCodes.CREATED).json(pet);
     } catch (error) {
       next(error);

@@ -7,6 +7,7 @@ export default class Pet extends Model {
   name: string;
   description: string;
   health: string;
+  qrCode: string;
   userId: number;
 }
 

@@ -9,6 +9,10 @@ export default class PetService {
     return this.model.create({ ...data });
   }
 
+  async updateQrCode(id: number, qrCode: string) {
+    return this.model.update({ qrCode }, { where: { id } });
+  }
+
   async findById(id: number): Promise<IPet | null> {
     return this.model.findOne({
       where: { id },
