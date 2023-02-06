@@ -1,0 +1,17 @@
+{
+  "name": "didyoufindmypet",
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "build/app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "build/app.js"
+    }
+  ]
+}

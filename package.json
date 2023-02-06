@@ -1,0 +1,70 @@
+{
+  "name": "didyoufindmypet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/server",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "/bin/sh tsc_eval.sh",
+    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "prestart": "npm run build && npm run db:reset",
+    "start": "node .",
+    "predev": "npm run build && npm run db:reset",
+    "dev": "nodemon --watch \"./src/**\" ./src/server.ts",
+    "compose:up": "docker-compose up -d --build",
+    "compose:down": "docker-compose down --remove-orphans",
+    "compose:up:dev": "docker-compose -f docker-compose.dev.yml up -d --build",
+    "compose:down:dev": "docker-compose -f docker-compose.dev.yml down --remove-orphans",
+    "logs": "docker-compose logs -f",
+    "lint": "eslint ./src --ext .ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RasecMH/DidYouFindMyPet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RasecMH/DidYouFindMyPet/issues"
+  },
+  "homepage": "https://github.com/RasecMH/DidYouFindMyPet#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "camelcase": "^7.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "http-status-code": "^2.1.0",
+    "http-status-codes": "^2.2.0",
+    "joi": "^17.7.0",
+    "jsonwebtoken": "^8.5.1",
+    "qrcode": "^1.5.1",
+    "sequelize": "^6.25.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
+    "@types/joi": "^17.2.3",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/node": "^18.11.9",
+    "@types/qrcode": "^1.5.0",
+    "@types/sequelize": "^4.28.14",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-sonarjs": "^0.16.0",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
+    "sequelize-cli": "^6.5.2",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.8.4"
+  }
+}
