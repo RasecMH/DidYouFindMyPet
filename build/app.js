@@ -8,6 +8,7 @@ const errorMiddleware_1 = __importDefault(require("./middleware/errorMiddleware"
 const UserRouter_1 = __importDefault(require("./routes/UserRouter"));
 const PetRouter_1 = __importDefault(require("./routes/PetRouter"));
 const LocationRouter_1 = __importDefault(require("./routes/LocationRouter"));
+require("dotenv/config");
 class App {
     constructor() {
         this.app = (0, express_1.default)();
@@ -33,5 +34,6 @@ class App {
         this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
     }
 }
-exports.default = App;
+const PORT = process.env.APP_PORT || 3001;
+new App().start(PORT);
 //# sourceMappingURL=app.js.map

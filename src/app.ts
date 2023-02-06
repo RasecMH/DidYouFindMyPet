@@ -3,6 +3,7 @@ import httpErrorMiddleware from './middleware/errorMiddleware';
 import UserRouter from './routes/UserRouter';
 import PetRouter from './routes/PetRouter';
 import LocationRouter from './routes/LocationRouter';
+import 'dotenv/config';
 
 class App {
   public app: express.Express;
@@ -38,4 +39,5 @@ class App {
   }
 }
 
-export default App;
+const PORT = process.env.APP_PORT || 3001;
+new App().start(PORT);

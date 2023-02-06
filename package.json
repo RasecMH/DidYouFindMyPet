@@ -2,7 +2,7 @@
   "name": "didyoufindmypet",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/server",
+  "main": "./build/app",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "/bin/sh tsc_eval.sh",
@@ -10,7 +10,7 @@
     "prestart": "npm run build && npm run db:reset",
     "start": "node .",
     "predev": "npm run build && npm run db:reset",
-    "dev": "nodemon --watch \"./src/**\" ./src/server.ts",
+    "dev": "nodemon --watch \"./src/**\" ./src/app.ts",
     "compose:up": "docker-compose up -d --build",
     "compose:down": "docker-compose down --remove-orphans",
     "compose:up:dev": "docker-compose -f docker-compose.dev.yml up -d --build",
