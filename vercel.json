@@ -6,12 +6,20 @@
     {
       "src": "build/app.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "build/app.js"
+    },
+    {
+      "src": "/(.+)",
+      "dest": "public/$1"
     }
   ]
 }
