@@ -28,7 +28,7 @@ class App {
         this.app.use('/pet', PetRouter_1.default);
         this.app.use('/location', LocationRouter_1.default);
         this.app.use(errorMiddleware_1.default);
-        this.app.use('/images', express_1.default.static(__dirname + 'public/images/qrcodes'));
+        this.app.use('/images', express_1.default.static('public/images/qrcodes'));
     }
     start(PORT) {
         this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));

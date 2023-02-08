@@ -6,12 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const http_status_codes_1 = require("http-status-codes");
 const httpError_1 = __importDefault(require("../utils/httpError"));
 const PetService_1 = __importDefault(require("../service/PetService"));
-const createQrCode_1 = __importDefault(require("../utils/createQrCode"));
+// import createQrCode from '../utils/createQrCode';
 class PetController {
     constructor() {
         this.service = new PetService_1.default();
         this.create = async (req, res, next) => {
             try {
+                const baseApiQrCode = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=';
+                const baseUrl = 'https://did-you-find-my-pet.vercel.app/pet/';
                 const { name, description, health, userId } = req.body;
                 const newPet = await this.service.create({
                     name,
@@ -20,9 +22,9 @@ class PetController {
                     qrCode: 'Not generated',
                     userId,
                 });
-                const qr = await (0, createQrCode_1.default)(newPet.id);
-                console.log(qr);
-                await this.service.updateQrCode(newPet.id, `/images/${1}`);
+                // const qr = await createQrCode(newPet.id);
+                // console.log(qr);
+                await this.service.updateQrCode(newPet.id, `${baseApiQrCode}${baseUrl}${newPet.id}`);
                 const pet = await this.service.findById(newPet.id);
                 return res.status(http_status_codes_1.StatusCodes.CREATED).json(pet);
             }
