@@ -10,7 +10,7 @@ const createQrCode = async (id) => {
     const myPath = path_1.default.join(process.cwd(), 'public/images/qrCodes');
     // const fileName = `${id}.png`;
     console.log(`${myPath}/${id}.png`);
-    const qrBase64 = await qrcode_1.default.toFile(`public/images/qrcodes/${id}.png`, `localhost:3001/pet/${id}`);
+    const qrBase64 = await qrcode_1.default.toFile(`public/images/qrcodes/${id}.png`, `https://did-you-find-my-pet.vercel.app/pet/${id}`);
     return qrBase64;
 };
 exports.default = createQrCode;

@@ -9,7 +9,7 @@ const createQrCode = async (id: number) => {
 
   const qrBase64 = await QRCode.toFile(
     `public/images/qrcodes/${id}.png`,
-    `localhost:3001/pet/${id}`,
+    `https://did-you-find-my-pet.vercel.app/pet/${id}`,
   );
 
   return qrBase64;
