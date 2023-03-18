@@ -1,7 +1,12 @@
 import { StatusCodes } from 'http-status-codes';
-import User from '../database/models/User';
 import { IUser, IUserRegister } from '../interfaces/UserInterface';
+import User from '../database/models/User';
+import Pet from '../database/models/Pet';
+// import LocationHistory from '../database/models/locationHistory';
+// import Contact from '../database/models/Contact';
 import HttpError from '../utils/httpError';
+import City from '../database/models/City';
+import State from '../database/models/State';
 
 export default class UserService {
   model = User;
@@ -18,7 +23,20 @@ export default class UserService {
     return this.model.findOne({ where: { email } });
   }
 
-  async findById(id: number): Promise<IUser | null> {
-    return this.model.findOne({ where: { id }, attributes: { exclude: ['password'] } });
+  async findById(id: number): Promise< IUser | null> {
+    const user = await this.model.findOne({
+      where: { id },
+      attributes: { exclude: ['password'] },
+      include: [{ model: City,
+        as: 'city',
+        attributes: { exclude: ['id', 'stateId'] },
+        include: [{ model: State, as: 'state', attributes: { exclude: ['id', 'countryId'] } }],
+      }],
+    });
+    const pet = await Pet.findAll({ where: { userId: id } });
+    if (user && pet) {
+      user.pets = pet;
+    }
+    return user;
   }
 }

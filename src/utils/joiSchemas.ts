@@ -35,6 +35,14 @@ export const registerSchema = Joi.object({
     'any.required': ALLFIELDSMUSTBEFILLED,
     'any.empty': ALLFIELDSMUSTBEFILLED,
   }),
+  phone: Joi.string().required().min(1).messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'string.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+  code: Joi.string().required().min(1).messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'string.empty': ALLFIELDSMUSTBEFILLED,
+  }),
 });
 
 export const createPetSchema = Joi.object({
@@ -47,6 +55,10 @@ export const createPetSchema = Joi.object({
     'string.empty': ALLFIELDSMUSTBEFILLED,
   }),
   health: Joi.string().required().messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'string.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+  image: Joi.string().required().messages({
     'any.required': ALLFIELDSMUSTBEFILLED,
     'string.empty': ALLFIELDSMUSTBEFILLED,
   }),

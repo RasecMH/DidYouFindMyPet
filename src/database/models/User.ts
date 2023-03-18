@@ -1,4 +1,5 @@
 import { Model, INTEGER, STRING } from 'sequelize';
+import { IPet } from '../../interfaces/PetInterface';
 import City from './City';
 import db from './index';
 
@@ -9,6 +10,9 @@ export default class User extends Model {
   password: string;
   address: string;
   cityId: number;
+  phone: string;
+  code: string;
+  pets?: IPet[] | [];
 }
 
 User.init({
@@ -32,7 +36,7 @@ User.init({
   },
   phone: {
     allowNull: false,
-    type: INTEGER,
+    type: STRING,
   },
   code: {
     allowNull: false,

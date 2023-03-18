@@ -11,12 +11,12 @@ export default class PetController {
     try {
       const baseApiQrCode = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=';
       const baseUrl = 'https://did-you-find-my-pet.vercel.app/pet/';
-      const { name, description, health, userId } = req.body;
+      const { name, description, health, image, userId } = req.body;
       const newPet = await this.service.create({
         name,
         description,
         health,
-        qrCode: 'Not generated',
+        image,
         userId,
       });
       // const qr = await createQrCode(newPet.id);

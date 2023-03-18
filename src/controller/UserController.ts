@@ -11,7 +11,7 @@ export default class UserController {
 
   register = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { name, email, password, address, cityId } = req.body;
+      const { name, email, password, address, cityId, phone, code } = req.body;
       const hashedPass = await bcrypt.hash(password, 8);
       const newUser = await this.service.create({
         name,
@@ -19,6 +19,8 @@ export default class UserController {
         password: hashedPass,
         address,
         cityId,
+        phone,
+        code,
       });
 
       const token = await createToken({ ...newUser });
@@ -50,13 +52,13 @@ export default class UserController {
 
   findById = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { id } = req.params;
-      const { userId } = req.body.userId;
-      if (id !== userId) throw new HttpError(StatusCodes.UNAUTHORIZED, 'Unathorized');
-      const user = await this.service.findById(Number(id));
+      const { userId } = req.body;
+      const user = await this.service.findById(Number(userId));
       if (!user) throw new HttpError(StatusCodes.NOT_FOUND, 'User not found');
-
-      return res.status(StatusCodes.OK).json({ user });
+      if (user.pets) {
+        console.log(user.pets[0].name);
+      }
+      return res.status(StatusCodes.OK).json({ user, pets: user.pets });
     } catch (error) {
       next(error);
     }

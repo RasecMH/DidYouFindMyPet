@@ -5,6 +5,7 @@ export default class Contact extends Model {
   id: number;
   message: string;
   phone: string;
+  code: string;
 }
 
 Contact.init({
@@ -20,7 +21,7 @@ Contact.init({
   },
   phone: {
     allowNull: false,
-    type: INTEGER,
+    type: STRING,
   },
   code: {
     allowNull: false,

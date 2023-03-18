@@ -15,7 +15,7 @@ module.exports = {
       },
       phone: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       code: {
         allowNull: false,

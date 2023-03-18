@@ -25,4 +25,5 @@ export interface ILocation extends ILocationWithContactId {
 export interface ILocationWithContact extends ILocation {
   message: string;
   phone: string;
+  code: string;
 }
