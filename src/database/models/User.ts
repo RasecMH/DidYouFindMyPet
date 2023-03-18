@@ -30,6 +30,14 @@ User.init({
     allowNull: false,
     type: STRING,
   },
+  phone: {
+    allowNull: false,
+    type: INTEGER,
+  },
+  code: {
+    allowNull: false,
+    type: STRING,
+  },
   address: {
     allowNull: false,
     type: STRING,

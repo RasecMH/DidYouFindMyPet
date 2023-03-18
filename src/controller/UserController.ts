@@ -51,6 +51,8 @@ export default class UserController {
   findById = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
+      const { userId } = req.body.userId;
+      if (id !== userId) throw new HttpError(StatusCodes.UNAUTHORIZED, 'Unathorized');
       const user = await this.service.findById(Number(id));
       if (!user) throw new HttpError(StatusCodes.NOT_FOUND, 'User not found');
 

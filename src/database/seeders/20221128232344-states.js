@@ -1,14 +1,14 @@
 'use strict';
+const fs = require('fs').promises;
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
 
-    await queryInterface.bulkInsert('states', [{
-      id: 517,
-      name: 'Ceará',
-      country_id: 30
-    }], {});
+    const sqlFile = await fs.readFile('src/database/assets/states.sql',{encoding: "UTF-8"})
+    const sqlFile2 = await fs.readFile('src/database/assets/states2.sql',{encoding: "UTF-8"})
+    await queryInterface.sequelize.query(sqlFile.replace('`', '\`'))
+    await queryInterface.sequelize.query(sqlFile2.replace('`', '\`'))
   },
 
   async down(queryInterface, Sequelize) {

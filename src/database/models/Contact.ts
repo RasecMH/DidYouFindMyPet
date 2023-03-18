@@ -20,6 +20,10 @@ Contact.init({
   },
   phone: {
     allowNull: false,
+    type: INTEGER,
+  },
+  code: {
+    allowNull: false,
     type: STRING,
   },
 }, {
