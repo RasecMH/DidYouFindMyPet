@@ -21,7 +21,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      qrCode: {
+      image: {
         allowNull: false,
         type: Sequelize.STRING,
         field: 'qr_code',

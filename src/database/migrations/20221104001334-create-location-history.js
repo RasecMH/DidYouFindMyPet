@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         field: 'pet_id',
       },
-      locationLink: {
+      location: {
         allowNull: false,
         type: Sequelize.STRING,
         field: 'location_link',
@@ -53,6 +53,12 @@ module.exports = {
         onDelete: 'CASCADE',
         type: Sequelize.INTEGER,
         field: 'contact_id',
+      },
+      createdDate: {
+        allowNull: false,
+        type: Sequelize.DATEONLY,
+        defaultValue: Sequelize.NOW,
+        field: 'created_date',
       },
     });
   },

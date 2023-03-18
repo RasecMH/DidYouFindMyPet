@@ -1,4 +1,4 @@
-import { Model, INTEGER, STRING } from 'sequelize';
+import { Model, INTEGER, STRING, DATEONLY } from 'sequelize';
 import City from './City';
 import Contact from './Contact';
 import db from './index';
@@ -26,7 +26,7 @@ LocationHistory.init({
     allowNull: false,
     type: INTEGER,
   },
-  locationLink: {
+  location: {
     allowNull: false,
     type: STRING,
   },
@@ -42,12 +42,16 @@ LocationHistory.init({
     allowNull: false,
     type: INTEGER,
   },
+  createdDate: {
+    allowNull: false,
+    type: DATEONLY,
+  },
 }, {
   sequelize: db,
   modelName: 'LocationHistory',
   tableName: 'location_history',
   underscored: true,
-  timestamps: false,
+  timestamps: true,
 });
 
 LocationHistory.belongsTo(Pet, { foreignKey: 'petId', as: 'pet' });

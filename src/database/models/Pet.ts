@@ -30,7 +30,7 @@ Pet.init({
     allowNull: false,
     type: STRING,
   },
-  qrCode: {
+  image: {
     allowNull: false,
     type: STRING,
   },
