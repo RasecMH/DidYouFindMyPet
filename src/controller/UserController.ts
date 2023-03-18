@@ -4,10 +4,12 @@ import { Request, Response, NextFunction } from 'express';
 import HttpError from '../utils/httpError';
 import UserService from '../service/UserService';
 import { createToken } from '../utils/jwt';
+import LocationService from '../service/LocationService';
 // import HttpError from '../utils/httpError';
 
 export default class UserController {
   service = new UserService();
+  locationService = new LocationService();
 
   register = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -56,9 +58,13 @@ export default class UserController {
       const user = await this.service.findById(Number(userId));
       if (!user) throw new HttpError(StatusCodes.NOT_FOUND, 'User not found');
       if (user.pets) {
-        console.log(user.pets[0].name);
+        const locations = await this.locationService.findAll();
+        const locationHistory = user.pets
+          .map((pet) => locations.filter((loc) => loc.petId === pet.id))
+          .flat(1);
+        return res.status(StatusCodes.OK).json({ user, pets: user.pets, locationHistory });
       }
-      return res.status(StatusCodes.OK).json({ user, pets: user.pets });
+      return res.status(StatusCodes.OK).json({ user });
     } catch (error) {
       next(error);
     }

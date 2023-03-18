@@ -24,7 +24,7 @@ module.exports = {
       location: {
         allowNull: false,
         type: Sequelize.STRING,
-        field: 'location_link',
+        field: 'location',
       },
       address: {
         allowNull: false,
@@ -56,7 +56,7 @@ module.exports = {
       },
       createdDate: {
         allowNull: false,
-        type: Sequelize.DATEONLY,
+        type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
         field: 'created_date',
       },

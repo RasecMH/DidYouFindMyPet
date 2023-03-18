@@ -1,4 +1,4 @@
-import { Model, INTEGER, STRING, DATEONLY } from 'sequelize';
+import { Model, INTEGER, STRING, DATE, NOW } from 'sequelize';
 import City from './City';
 import Contact from './Contact';
 import db from './index';
@@ -7,12 +7,13 @@ import Pet from './Pet';
 export default class LocationHistory extends Model {
   id: number;
   petId: number;
-  locationLink: string;
+  location: string;
   address: string;
   cityId: number;
   contactId: number;
   message?: string;
   phone?: string;
+  code?: string;
 }
 
 LocationHistory.init({
@@ -44,14 +45,15 @@ LocationHistory.init({
   },
   createdDate: {
     allowNull: false,
-    type: DATEONLY,
+    type: DATE,
+    defaultValue: NOW,
   },
 }, {
   sequelize: db,
   modelName: 'LocationHistory',
   tableName: 'location_history',
   underscored: true,
-  timestamps: true,
+  timestamps: false,
 });
 
 LocationHistory.belongsTo(Pet, { foreignKey: 'petId', as: 'pet' });

@@ -69,7 +69,7 @@ export const locationSchema = Joi.object({
     'any.required': ALLFIELDSMUSTBEFILLED,
     'any.empty': ALLFIELDSMUSTBEFILLED,
   }),
-  locationLink: Joi.string().required().messages({
+  location: Joi.string().required().messages({
     'any.required': ALLFIELDSMUSTBEFILLED,
     'string.empty': ALLFIELDSMUSTBEFILLED,
   }),
@@ -86,6 +86,10 @@ export const locationSchema = Joi.object({
     'string.empty': ALLFIELDSMUSTBEFILLED,
   }),
   phone: Joi.string().required().messages({
+    'any.required': ALLFIELDSMUSTBEFILLED,
+    'string.empty': ALLFIELDSMUSTBEFILLED,
+  }),
+  code: Joi.string().required().messages({
     'any.required': ALLFIELDSMUSTBEFILLED,
     'string.empty': ALLFIELDSMUSTBEFILLED,
   }),

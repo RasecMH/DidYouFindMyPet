@@ -1,6 +1,7 @@
 export interface IContactRegister {
   message?: string;
   phone?: string;
+  code?: string;
 }
 
 export interface IContact extends IContactRegister {
@@ -9,7 +10,7 @@ export interface IContact extends IContactRegister {
 
 export interface ILocationRegister extends IContactRegister {
   petId: number;
-  locationLink: string;
+  location: string;
   address: string;
   cityId: number;
 }
