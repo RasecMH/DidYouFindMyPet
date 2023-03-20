@@ -8,6 +8,7 @@ const errorMiddleware_1 = __importDefault(require("./middleware/errorMiddleware"
 const UserRouter_1 = __importDefault(require("./routes/UserRouter"));
 const PetRouter_1 = __importDefault(require("./routes/PetRouter"));
 const LocationRouter_1 = __importDefault(require("./routes/LocationRouter"));
+const CitiesRouter_1 = __importDefault(require("./routes/CitiesRouter"));
 require("dotenv/config");
 class App {
     constructor() {
@@ -27,6 +28,7 @@ class App {
         this.app.use('/user', UserRouter_1.default);
         this.app.use('/pet', PetRouter_1.default);
         this.app.use('/location', LocationRouter_1.default);
+        this.app.use('/cities', CitiesRouter_1.default);
         this.app.use(errorMiddleware_1.default);
         this.app.use('/images', express_1.default.static('public/images/qrcodes'));
     }

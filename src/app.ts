@@ -3,6 +3,7 @@ import httpErrorMiddleware from './middleware/errorMiddleware';
 import UserRouter from './routes/UserRouter';
 import PetRouter from './routes/PetRouter';
 import LocationRouter from './routes/LocationRouter';
+import CitiesRouter from './routes/CitiesRouter';
 import 'dotenv/config';
 
 class App {
@@ -29,6 +30,7 @@ class App {
     this.app.use('/user', UserRouter);
     this.app.use('/pet', PetRouter);
     this.app.use('/location', LocationRouter);
+    this.app.use('/cities', CitiesRouter);
     this.app.use(httpErrorMiddleware);
 
     this.app.use('/images', express.static('public/images/qrcodes'));

@@ -1,4 +1,5 @@
 import { Model, INTEGER, STRING } from 'sequelize';
+import { IState } from '../../interfaces/CitiesInterface';
 import db from './index';
 import State from './State';
 
@@ -6,6 +7,7 @@ export default class City extends Model {
   id: number;
   name: string;
   stateId: number;
+  state: IState;
 }
 
 City.init({

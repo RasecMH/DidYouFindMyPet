@@ -31,13 +31,15 @@ const http_status_codes_1 = require("http-status-codes");
 const httpError_1 = __importDefault(require("../utils/httpError"));
 const UserService_1 = __importDefault(require("../service/UserService"));
 const jwt_1 = require("../utils/jwt");
+const LocationService_1 = __importDefault(require("../service/LocationService"));
 // import HttpError from '../utils/httpError';
 class UserController {
     constructor() {
         this.service = new UserService_1.default();
+        this.locationService = new LocationService_1.default();
         this.register = async (req, res, next) => {
             try {
-                const { name, email, password, address, cityId } = req.body;
+                const { name, email, password, address, cityId, phone, code } = req.body;
                 const hashedPass = await bcryptjs_1.default.hash(password, 8);
                 const newUser = await this.service.create({
                     name,
@@ -45,6 +47,8 @@ class UserController {
                     password: hashedPass,
                     address,
                     cityId,
+                    phone,
+                    code,
                 });
                 const token = await (0, jwt_1.createToken)({ ...newUser });
                 return res.status(http_status_codes_1.StatusCodes.CREATED).json({ token });
@@ -72,10 +76,17 @@ class UserController {
         };
         this.findById = async (req, res, next) => {
             try {
-                const { id } = req.params;
-                const user = await this.service.findById(Number(id));
+                const { userId } = req.body;
+                const user = await this.service.findById(Number(userId));
                 if (!user)
                     throw new httpError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'User not found');
+                if (user.pets) {
+                    const locations = await this.locationService.findAll();
+                    const locationHistory = user.pets
+                        .map((pet) => locations.filter((loc) => loc.petId === pet.id))
+                        .flat(1);
+                    return res.status(http_status_codes_1.StatusCodes.OK).json({ user, pets: user.pets, locationHistory });
+                }
                 return res.status(http_status_codes_1.StatusCodes.OK).json({ user });
             }
             catch (error) {

@@ -38,6 +38,14 @@ exports.registerSchema = joi_1.default.object({
         'any.required': ALLFIELDSMUSTBEFILLED,
         'any.empty': ALLFIELDSMUSTBEFILLED,
     }),
+    phone: joi_1.default.string().required().min(1).messages({
+        'any.required': ALLFIELDSMUSTBEFILLED,
+        'string.empty': ALLFIELDSMUSTBEFILLED,
+    }),
+    code: joi_1.default.string().required().min(1).messages({
+        'any.required': ALLFIELDSMUSTBEFILLED,
+        'string.empty': ALLFIELDSMUSTBEFILLED,
+    }),
 });
 exports.createPetSchema = joi_1.default.object({
     name: joi_1.default.string().required().messages({
@@ -52,13 +60,17 @@ exports.createPetSchema = joi_1.default.object({
         'any.required': ALLFIELDSMUSTBEFILLED,
         'string.empty': ALLFIELDSMUSTBEFILLED,
     }),
+    image: joi_1.default.string().required().messages({
+        'any.required': ALLFIELDSMUSTBEFILLED,
+        'string.empty': ALLFIELDSMUSTBEFILLED,
+    }),
 });
 exports.locationSchema = joi_1.default.object({
     petId: joi_1.default.number().required().min(0).messages({
         'any.required': ALLFIELDSMUSTBEFILLED,
         'any.empty': ALLFIELDSMUSTBEFILLED,
     }),
-    locationLink: joi_1.default.string().required().messages({
+    location: joi_1.default.string().required().messages({
         'any.required': ALLFIELDSMUSTBEFILLED,
         'string.empty': ALLFIELDSMUSTBEFILLED,
     }),
@@ -75,6 +87,10 @@ exports.locationSchema = joi_1.default.object({
         'string.empty': ALLFIELDSMUSTBEFILLED,
     }),
     phone: joi_1.default.string().required().messages({
+        'any.required': ALLFIELDSMUSTBEFILLED,
+        'string.empty': ALLFIELDSMUSTBEFILLED,
+    }),
+    code: joi_1.default.string().required().messages({
         'any.required': ALLFIELDSMUSTBEFILLED,
         'string.empty': ALLFIELDSMUSTBEFILLED,
     }),

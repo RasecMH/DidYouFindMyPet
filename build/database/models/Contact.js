@@ -23,6 +23,10 @@ Contact.init({
         allowNull: false,
         type: sequelize_1.STRING,
     },
+    code: {
+        allowNull: false,
+        type: sequelize_1.STRING,
+    },
 }, {
     sequelize: index_1.default,
     modelName: 'Contact',

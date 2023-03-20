@@ -22,7 +22,7 @@ LocationHistory.init({
         allowNull: false,
         type: sequelize_1.INTEGER,
     },
-    locationLink: {
+    location: {
         allowNull: false,
         type: sequelize_1.STRING,
     },
@@ -37,6 +37,11 @@ LocationHistory.init({
     contactId: {
         allowNull: false,
         type: sequelize_1.INTEGER,
+    },
+    createdDate: {
+        allowNull: false,
+        type: sequelize_1.DATE,
+        defaultValue: sequelize_1.NOW,
     },
 }, {
     sequelize: index_1.default,

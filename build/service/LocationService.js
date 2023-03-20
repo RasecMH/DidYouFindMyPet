@@ -10,7 +10,9 @@ class LocationService {
         this.model = locationHistory_1.default;
     }
     async create(data) {
-        const contact = await Contact_1.default.create({ message: data.message, phone: data.phone });
+        const contact = await Contact_1.default.create({
+            message: data.message, phone: data.phone, code: data.code
+        });
         return this.model.create({ ...data, contactId: contact.id });
     }
     async findById(id) {
@@ -27,6 +29,16 @@ class LocationService {
     async findAllById(petId) {
         return this.model.findAll({
             where: { petId },
+            include: [
+                {
+                    model: Contact_1.default,
+                    as: 'contact'
+                }
+            ]
+        });
+    }
+    async findAll() {
+        return this.model.findAll({
             include: [
                 {
                     model: Contact_1.default,

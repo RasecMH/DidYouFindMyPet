@@ -28,7 +28,7 @@ Pet.init({
         allowNull: false,
         type: sequelize_1.STRING,
     },
-    qrCode: {
+    image: {
         allowNull: false,
         type: sequelize_1.STRING,
     },

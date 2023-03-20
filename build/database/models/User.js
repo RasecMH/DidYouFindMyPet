@@ -28,6 +28,14 @@ User.init({
         allowNull: false,
         type: sequelize_1.STRING,
     },
+    phone: {
+        allowNull: false,
+        type: sequelize_1.STRING,
+    },
+    code: {
+        allowNull: false,
+        type: sequelize_1.STRING,
+    },
     address: {
         allowNull: false,
         type: sequelize_1.STRING,

@@ -11,14 +11,15 @@ class LocationController {
         this.service = new LocationService_1.default();
         this.create = async (req, res, next) => {
             try {
-                const { petId, locationLink, address, cityId, message, phone } = req.body;
+                const { petId, location, address, cityId, message, phone, code } = req.body;
                 const newLocation = await this.service.create({
                     petId,
-                    locationLink,
+                    location,
                     address,
                     cityId,
                     message,
                     phone,
+                    code,
                 });
                 const Location = await this.service.findById(newLocation.id);
                 return res.status(http_status_codes_1.StatusCodes.CREATED).json(Location);
