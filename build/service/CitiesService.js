@@ -44,7 +44,7 @@ class CitiesService {
                         }
                     ]
                 }
-            ]
+            ],
         });
     }
 }
