@@ -1,6 +1,8 @@
 import Contact from '../database/models/Contact';
 import Location from '../database/models/locationHistory';
 import { ILocation, ILocationRegister } from '../interfaces/LocationInterface';
+import City from '../database/models/City';
+import State from '../database/models/State';
 
 export default class LocationService {
   model = Location;
@@ -26,7 +28,12 @@ export default class LocationService {
       include: [
         {
           model: Contact,
-          as: 'contact' }] });
+          as: 'contact' },
+        { model: City,
+          as: 'city',
+          attributes: { exclude: ['id', 'stateId'] },
+          include: [{ model: State, as: 'state', attributes: { exclude: ['id', 'countryId'] } }],
+        }] });
   }
 
   async findAll(): Promise<ILocation[] | []> {
