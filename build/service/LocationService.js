@@ -50,6 +50,11 @@ class LocationService {
                 {
                     model: Contact_1.default,
                     as: 'contact'
+                },
+                { model: City_1.default,
+                    as: 'city',
+                    attributes: { exclude: ['id', 'stateId'] },
+                    include: [{ model: State_1.default, as: 'state', attributes: { exclude: ['id', 'countryId'] } }],
                 }
             ]
         });
