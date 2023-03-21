@@ -7,6 +7,7 @@ const Contact_1 = __importDefault(require("../database/models/Contact"));
 const locationHistory_1 = __importDefault(require("../database/models/locationHistory"));
 const City_1 = __importDefault(require("../database/models/City"));
 const State_1 = __importDefault(require("../database/models/State"));
+const Pet_1 = __importDefault(require("../database/models/Pet"));
 class LocationService {
     constructor() {
         this.model = locationHistory_1.default;
@@ -51,6 +52,8 @@ class LocationService {
                     model: Contact_1.default,
                     as: 'contact'
                 },
+                { model: Pet_1.default,
+                    as: 'pet' },
                 { model: City_1.default,
                     as: 'city',
                     attributes: { exclude: ['id', 'stateId'] },

@@ -3,6 +3,7 @@ import Location from '../database/models/locationHistory';
 import { ILocation, ILocationRegister } from '../interfaces/LocationInterface';
 import City from '../database/models/City';
 import State from '../database/models/State';
+import Pet from '../database/models/Pet';
 
 export default class LocationService {
   model = Location;
@@ -42,6 +43,8 @@ export default class LocationService {
         {
           model: Contact,
           as: 'contact' },
+        { model: Pet,
+          as: 'pet' },
         { model: City,
           as: 'city',
           attributes: { exclude: ['id', 'stateId'] },
