@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const User_1 = __importDefault(require("../database/models/User"));
 const Pet_1 = __importDefault(require("../database/models/Pet"));
+const City_1 = __importDefault(require("../database/models/City"));
+const State_1 = __importDefault(require("../database/models/State"));
 class PetService {
     constructor() {
         this.model = Pet_1.default;
@@ -24,7 +26,12 @@ class PetService {
                     as: 'user',
                     attributes: {
                         exclude: ['password'],
-                    }
+                    },
+                    include: [{ model: City_1.default,
+                            as: 'city',
+                            attributes: { exclude: ['id', 'stateId'] },
+                            include: [{ model: State_1.default, as: 'state', attributes: { exclude: ['id', 'countryId'] } }],
+                        }],
                 }
             ]
         });
