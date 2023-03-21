@@ -41,6 +41,11 @@ export default class LocationService {
       include: [
         {
           model: Contact,
-          as: 'contact' }] });
+          as: 'contact' },
+        { model: City,
+          as: 'city',
+          attributes: { exclude: ['id', 'stateId'] },
+          include: [{ model: State, as: 'state', attributes: { exclude: ['id', 'countryId'] } }],
+        }] });
   }
 }
