@@ -25,7 +25,7 @@ export default class UserController {
         code,
       });
 
-      const token = await createToken({ ...newUser });
+      const token = await createToken({ id: newUser.id });
 
       return res.status(StatusCodes.CREATED).json({ token });
     } catch (error) {

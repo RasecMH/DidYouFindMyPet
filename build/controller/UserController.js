@@ -50,7 +50,7 @@ class UserController {
                     phone,
                     code,
                 });
-                const token = await (0, jwt_1.createToken)({ ...newUser });
+                const token = await (0, jwt_1.createToken)({ id: newUser.id });
                 return res.status(http_status_codes_1.StatusCodes.CREATED).json({ token });
             }
             catch (error) {
