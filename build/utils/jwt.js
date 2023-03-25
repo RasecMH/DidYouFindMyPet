@@ -7,7 +7,7 @@ exports.validateToken = exports.createToken = void 0;
 const jsonwebtoken_1 = require("jsonwebtoken");
 const httpError_1 = __importDefault(require("./httpError"));
 const jwtSecret = process.env.JWT_SECRET || 'JWT_SECRET';
-const createToken = async (payload) => (0, jsonwebtoken_1.sign)(payload, jwtSecret, {
+const createToken = async (payload) => (0, jsonwebtoken_1.sign)({ id: payload.id }, jwtSecret, {
     expiresIn: '1d',
     algorithm: 'HS256',
 });

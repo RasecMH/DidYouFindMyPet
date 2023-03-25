@@ -23,7 +23,8 @@ class UserService {
         return this.model.create({ ...data });
     }
     async findByEmail(email) {
-        return this.model.findOne({ where: { email } });
+        const user = await this.model.findOne({ where: { email } });
+        return user;
     }
     async findById(id) {
         const user = await this.model.findOne({

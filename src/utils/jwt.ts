@@ -6,7 +6,7 @@ import HttpError from './httpError';
 const jwtSecret = process.env.JWT_SECRET || 'JWT_SECRET';
 
 export const createToken = async (payload: Pick<IUser, 'id'>) =>
-  sign(payload, jwtSecret as string, {
+  sign({ id: payload.id }, jwtSecret as string, {
     expiresIn: '1d',
     algorithm: 'HS256',
   });

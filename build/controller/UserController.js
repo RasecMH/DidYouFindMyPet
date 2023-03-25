@@ -67,7 +67,7 @@ class UserController {
                 if (!validatePassword) {
                     throw new httpError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'E-mail or Password invalid');
                 }
-                const token = await (0, jwt_1.createToken)({ ...user });
+                const token = await (0, jwt_1.createToken)({ id: user.id });
                 return res.status(http_status_codes_1.StatusCodes.OK).json({ token });
             }
             catch (error) {

@@ -44,7 +44,7 @@ export default class UserController {
         throw new HttpError(StatusCodes.NOT_FOUND, 'E-mail or Password invalid');
       }
 
-      const token = await createToken({ ...user });
+      const token = await createToken({ id: user.id });
 
       return res.status(StatusCodes.OK).json({ token });
     } catch (error) {

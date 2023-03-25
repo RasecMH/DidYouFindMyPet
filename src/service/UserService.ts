@@ -20,7 +20,8 @@ export default class UserService {
   }
 
   async findByEmail(email: string): Promise<IUser | null> {
-    return this.model.findOne({ where: { email } });
+    const user = await this.model.findOne({ where: { email } });
+    return user;
   }
 
   async findById(id: number): Promise< IUser | null> {
